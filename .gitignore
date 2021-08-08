@@ -21,4 +21,6 @@
 
 */target/**
 *.classpath
-/target/
+/target/4
+
+*settings
