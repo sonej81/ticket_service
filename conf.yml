@@ -1,7 +1,5 @@
 ---
 
-template: Hello, %s
-defaultName: Stranger
 database:
   # the name of your JDBC driver ticket_service?stringtype=unspecified
   driverClass: org.postgresql.Driver

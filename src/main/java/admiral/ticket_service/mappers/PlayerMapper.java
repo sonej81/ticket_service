@@ -7,7 +7,6 @@ import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
 import admiral.ticket_service.models.LoggedPlayer;
-import admiral.ticket_service.representation.Ticket;
 
 public class PlayerMapper implements ResultSetMapper<LoggedPlayer> {
 

@@ -65,22 +65,26 @@ public class TicketBodyValidator {
 	
 	
 	private boolean ticketNumberTooLong(){
-		return body.ticket_number.length() > TICKET_NUMBER_LENGTH;
+		String ticket_number = body.getTicket_number();
+		return ticket_number.length() > TICKET_NUMBER_LENGTH;
 	}
 	
 	private boolean ticketNumberIsMissing(){
-		return body.ticket_number == null || body.ticket_number.isEmpty();
+		String ticket_number = body.getTicket_number();
+		return ticket_number == null || ticket_number.isEmpty();
 	}
 	
 	private boolean ticketTypeIsMissing(){
-		return body.ticket_type == null;
+		TicketType ticket_type = body.getTicket_type();
+		return ticket_type == null;
 	}
 	
 	private boolean wrongTicketType(){
 		TicketType[] types = TicketType.values();
 		
 		for(TicketType t: types){
-			if(t == body.ticket_type ){
+			TicketType ticket_type = body.getTicket_type();
+			if(t == ticket_type){
 				return false;
 			}
 		}
@@ -90,20 +94,24 @@ public class TicketBodyValidator {
 	
 	
 	private boolean betAmountMissing(){
-		return body.bet_amount <=0;
+		double bet_amount = body.getBet_amount();
+		return bet_amount <=0;
 	}
 	
 	private boolean betAmountSmallerThenMinimum( ){
-		return body.bet_amount < MIN_BET_AMOUNT;
+		double bet_amount = body.getBet_amount();
+		return bet_amount < MIN_BET_AMOUNT;
 	}
 	
 	private boolean quotaMissing(){
-		return body.quota <=0;
+		double quota = body.getQuota();
+		return quota <=0;
 	}
 	
 		
 	private boolean winAmountMissing(){
-		return body.win_amount <=0;
+		double win_amount = body.getQuota();
+		return win_amount <=0;
 	}
 
 }

@@ -1,6 +1,5 @@
 package admiral.ticket_service.dbi;
 
-import org.skife.jdbi.org.antlr.runtime.tree.RewriteRuleNodeStream;
 import org.skife.jdbi.v2.DBI;
 
 import admiral.ticket_service.configuration.TicketServiceConfiguration;

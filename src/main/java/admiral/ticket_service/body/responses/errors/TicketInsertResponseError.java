@@ -2,7 +2,7 @@ package admiral.ticket_service.body.responses.errors;
 
 public class TicketInsertResponseError {
 	
-	String message;
+	private String message;
 	
 	public TicketInsertResponseError(String message){
 		this.message = message;

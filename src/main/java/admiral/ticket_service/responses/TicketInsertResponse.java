@@ -1,14 +1,12 @@
 package admiral.ticket_service.responses;
 
-import org.eclipse.jetty.util.component.Dumpable;
-
 public class TicketInsertResponse {
 	
-	String message;
-	String ticket_number;
-	double bet_amount;
-	double quota;
-	double win_amount;
+	private String message;
+	private String ticket_number;
+	private double bet_amount;
+	private double quota;
+	private double win_amount;
 	
 	
 	public TicketInsertResponse(String message, String ticket_number, double bet_amount, double quota,
