@@ -21,4 +21,5 @@
 
 /target/**
 
-*settings
+*.settings
+/target/
