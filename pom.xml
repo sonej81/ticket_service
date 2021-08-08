@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>admiral</groupId>
+	<artifactId>ticket-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>ticket-service</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!-- Dropwizard version -->
+		<dropwizard.version>2.0.24</dropwizard.version>
+
+		<!-- JDBI version -->
+		<jdbi.version>2.78</jdbi.version>
+
+	</properties>
+
+
+	<dependencies>
+
+		<!-- Dropwizard core -->
+
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-core</artifactId>
+			<version>${dropwizard.version}</version>
+		</dependency>
+
+		<!-- Dropwizard JDBI2 -->
+
+		<dependency>
+			<groupId>org.jdbi</groupId>
+			<artifactId>jdbi</artifactId>
+			<version>${jdbi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.dropwizard.modules</groupId>
+			<artifactId>dropwizard-jdbi</artifactId>
+			<version>${dropwizard.version}</version>
+		</dependency>
+
+		<!-- Postgre jdbc driver -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.23</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<createDependencyReducedPom>true</createDependencyReducedPom>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>admiral.ticket_service.TicketServiceAplication</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+</project>
