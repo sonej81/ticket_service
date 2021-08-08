@@ -19,8 +19,6 @@
 *.tar.gz
 *.rar
 
-*/target/**
-*.classpath
-/target/4
+/target/**
 
 *settings
